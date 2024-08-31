@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %}Register{% endblock %} {% block
+content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Register</h2>
+          <form method="POST" action="{{ url_for('register') }}">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+              {{ form.username.label(class="form-label") }} {{
+              form.username(class="form-control",
+              placeholder=form.username.render_kw.placeholder) }}
+            </div>
+
+            <div class="mb-3">
+              {{ form.password.label(class="form-label") }} {{
+              form.password(class="form-control",
+              placeholder=form.password.render_kw.placeholder) }}
+            </div>
+
+            <div class="mb-3">
+              {{ form.password2.label(class="form-label") }} {{
+              form.password2(class="form-control",
+              placeholder=form.password2.render_kw.placeholder) }}
+            </div>
+
+            <div class="d-grid">{{ form.submit(class="btn btn-primary") }}</div>
+          </form>
+          <div class="text-center mt-3">
+            <a href="{{ url_for('login') }}"
+              >Already have an account? Log in here!</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
