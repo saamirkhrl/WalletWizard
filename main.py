@@ -131,8 +131,10 @@ def home():
                 db.session.commit()
                 flash(f'Sent {recipient.username} ${amount}','success')
                 return redirect(url_for('home'))
+    
+    top_richest = User.query.order_by(User.cash.desc()).all()
 
-    return render_template('home.html', user=user, form=form)
+    return render_template('home.html', user=user, form=form, top = top_richest)
 
 @app.route('/logout')
 def logout():
